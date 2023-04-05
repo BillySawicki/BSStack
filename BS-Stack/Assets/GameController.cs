@@ -106,9 +106,11 @@ public class GameController : MonoBehaviour
         currentCube = Instantiate(lastCube);
         //current cubes name equals to the level number. 
         currentCube.name = Level + "";
+        currentCube.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.HSVToRGB((Level / 100f) % 1f, 1f, 1f));
         Level++;
         Camera.main.transform.position = currentCube.transform.position + new Vector3(100, 100, 100);
         Camera.main.transform.LookAt(currentCube.transform.position);
+        text.text = "Score: " + Level;
     }
 
     IEnumerator X(){
