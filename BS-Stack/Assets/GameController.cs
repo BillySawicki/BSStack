@@ -45,16 +45,17 @@ public class GameController : MonoBehaviour
         var pos1 = lastCube.transform.position + Vector3.up * 10f;
         //variable pos2 equals to the pos1 plus any level by number of 2
         var pos2 = pos1 +((Level % 2 == 0)? Vector3.left : Vector3.forward) * 120;
+        var pos3 = pos1 +((Level % 2 == 0)? Vector3.right : Vector3.back)* 120; 
         //If the level is by the number of 2
         if(Level % 2 == 0){
             //Current position of the current cube based of the 3 axis of 
             //pos1, pos2, and time
-            currentCube.transform.position = Vector3.Lerp(pos2, pos1, time);
+            currentCube.transform.position = Vector3.Lerp(pos2, pos3, time);
         }
         else{
             //Current position of the current cube based of the 3 axis of 
             //pos1, pos2, and time
-            currentCube.transform.position = Vector3.Lerp(pos1, pos2, time);
+            currentCube.transform.position = Vector3.Lerp(pos3, pos2, time);
         }
         //If left ouse button is clicked 
         if(Input.GetMouseButtonDown(0)){
